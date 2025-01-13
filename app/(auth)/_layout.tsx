@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 
 const AuthLayout = () => {
-  const loggin = true;
+  const loggin = false;
 
   if (loggin) return <Redirect href="/home" />;
 

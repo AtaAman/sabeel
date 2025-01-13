@@ -13,6 +13,7 @@ import {
 
 import { images } from "../../constants";
 import { CustomButton, FormField } from "../../components";
+import { LinearGradient } from "expo-linear-gradient";
 
 const login = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -30,10 +31,15 @@ const login = () => {
   };
 
   return (
-    <KeyboardAvoidingView>
-      <SafeAreaView className="bg-primary-100">
+    <LinearGradient
+      colors={["#000814", "#0077b6"]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={{ flex: 1 }}
+    >
+      <KeyboardAvoidingView>
         <ScrollView>
-          <View className="w-full flex justify-center h-screen-safe px-4 my-6">
+          <View className="w-full flex items-center justify-center h-screen-safe px-4 my-6">
             <Image
               source={images.logo}
               resizeMode="contain"
@@ -50,7 +56,7 @@ const login = () => {
               handleChangeText={(e: any) => setForm({ ...form, email: e })}
               otherStyles="mt-7"
               keyboardType="email-address"
-              placeholder="emial"
+              placeholder="email"
             />
 
             <FormField
@@ -64,7 +70,7 @@ const login = () => {
             <CustomButton
               title="Sign In"
               handlePress={submit}
-              containerStyles="mt-7"
+              containerStyles="w-full mt-7"
               isLoading={isSubmitting}
               textStyles={undefined}
             />
@@ -82,8 +88,8 @@ const login = () => {
             </View>
           </View>
         </ScrollView>
-      </SafeAreaView>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </LinearGradient>
   );
 };
 

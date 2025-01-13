@@ -180,13 +180,13 @@ const Quran = () => {
 
   return (
     <LinearGradient
-      colors={["#000814", "#0077b6"]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={{ flex: 1 }}
+    colors={["#1e88e5", "#e3f2fd"]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={{ flex: 1 }}
     >
-      <SafeAreaView className="flex h-screen-safe items-center justify-start">
-        <View className="h-15 w-full flex flex-row items-center justify-between  p-5">
+      <View className="flex h-screen-safe items-center justify-start">
+        <View className="w-full flex flex-row items-center justify-between p-4">
           <Image
             source={images.logo}
             className="h-[45px] w-[80px]"
@@ -199,11 +199,11 @@ const Quran = () => {
               })
             }
           >
-            <Icon name="cogs" size={30} color="#fff" />
+            <Icon name="gear" size={30} color="#fff" />
           </TouchableOpacity>
         </View>
 
-        <View className="bg-[#fff]/10  backdrop-blur-lg rounded-2xl p-5 text-primary  max-h-[80%] w-[90%]">
+        <View className="bg-[#000]/40  backdrop-blur-lg rounded-2xl p-5 text-primary  max-h-[75%] w-[95%]">
           <View className="flex items-center bg-[#edf2fb] rounded-2xl px-4 py-2 mb-4 flex-row justify-between">
             <TouchableOpacity
               className="flex flex-row justify-center items-center gap-2"
@@ -242,7 +242,7 @@ const Quran = () => {
               showsHorizontalScrollIndicator={false}
             >
               <Text
-                className="text-secondary-100 bg-[#edf2fb]/90 backdrop-blur-lg rounded-2xl p-2 mt-8"
+                className="text-secondary-100 bg-[#edf2fb]/90 backdrop-blur-lg rounded-2xl p-5 mt-8"
                 style={[styles.arabicText, { fontFamily: fonts[arabicFont] }]}
               >
                 {
@@ -292,38 +292,27 @@ const Quran = () => {
             </ScrollView>
           )}
         </View>
-        <View className="flex flex-row items-center absolute bottom-0 justify-around rounded-2xl py-4 w-[90%] m-3">
+        <View className="flex flex-row items-center absolute bottom-5 justify-around rounded-2xl py-4 w-[90%] m-3">
           <TouchableOpacity
-            className="bg-[#edf2fb]/90 backdrop-blur-lg px-8 flex rounded-2xl justify-center flex-row w-40 py-4"
+            className="bg-[#000]/70 backdrop-blur-lg px-8 flex rounded-2xl justify-center flex-row w-40 py-4"
             onPress={playPrev}
           >
-            <Icon name="arrow-left" size={20} color="#000814" />
+            <Icon name="arrow-left" size={20} color="#fff" />
           </TouchableOpacity>
           <TouchableOpacity
-            className="bg-[#edf2fb]/90 backdrop-blur-lg px-8 w-40 rounded-2xl flex justify-center flex-row py-4"
+            className="bg-[#000]/70 backdrop-blur-lg px-8 w-40 rounded-2xl flex justify-center flex-row py-4"
             onPress={playNext}
           >
-            <Icon name="arrow-right" size={20} color="#000814" />
+            <Icon name="arrow-right" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </View>
     </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
-  settingsPanel: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    width: "100%",
-    backgroundColor: "#264653",
-    padding: 20,
-    elevation: 5,
-    zIndex: 10,
-  },
-  arabicText: { fontSize: 30, textAlign: "center", marginBottom: 10 },
+   arabicText: { fontSize: 30, textAlign: "center", marginBottom: 10 },
   translationText: {
     fontSize: 18,
     fontFamily: "Inter",

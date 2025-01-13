@@ -32,9 +32,9 @@ const FormField: React.FC<FormFieldProps> = ({
     <View className={`space-y-2 ${otherStyles}`}>
       <Text className="text-base text-secondary font-pmedium">{title}</Text>
 
-      <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center">
+      <View className="w-full h-16 px-4 bg-secondary rounded-2xl border-2 border-black-200 focus:border-secondary-100 flex flex-row items-center">
         <TextInput
-          className="flex-1 text-secondary font-psemibold text-base"
+          className="flex-1 text-primary font-psemibold text-base"
           value={value}
           placeholder={placeholder}
           placeholderTextColor="#777"

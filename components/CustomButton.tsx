@@ -24,15 +24,16 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   return (
     <TouchableOpacity
       style={{
-        shadowColor: "#020202",
+        padding: 20,
+        shadowColor: "020202",
         shadowOffset: { width: 2, height: 8 },
-        shadowOpacity: 0.25,
-        shadowRadius: 6,
+        shadowOpacity: 0.2,
+        shadowRadius: 12,
         elevation: 2,
       }}
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`bg-secondary rounded-xl min-h-[62px] flex flex-row justify-center items-center ${containerStyles} ${
+      className={`bg-[#fff]/60 backdrop-blur-lg rounded-xl min-h-[62px] flex flex-row justify-center items-center ${containerStyles} ${
         isLoading ? "opacity-50" : ""
       }`}
       disabled={isLoading}

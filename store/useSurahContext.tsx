@@ -29,8 +29,8 @@ export const SurahProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedQuari, setSelectedQuari] = useState<number>(6);
   const [quari, setQuari] = useState<any[]>([]);
   const [arabicFont, setArabicFont] = useState(0);
-  const [showTranslationUrdu, setShowTranslationUrdu] = useState(false);
-  const [showTranslationEnglish, setShowTranslationEnglish] = useState(false);
+  const [showTranslationUrdu, setShowTranslationUrdu] = useState(true);
+  const [showTranslationEnglish, setShowTranslationEnglish] = useState(true);
   
   useEffect(() => {
     const fetchQuari = async () => {

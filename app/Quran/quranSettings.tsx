@@ -118,7 +118,6 @@ const Settings: React.FC = () => {
 export default Settings;
 
 const styles = StyleSheet.create({
-
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",

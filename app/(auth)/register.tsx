@@ -12,6 +12,7 @@ import {
 
 import { images } from "../../constants";
 import { CustomButton, FormField } from "../../components";
+import { LinearGradient } from "expo-linear-gradient";
 
 const register = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -30,10 +31,15 @@ const register = () => {
   };
 
   return (
+     <LinearGradient
+          colors={["#000814", "#0077b6"]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{ flex: 1 }}
+        >
     <KeyboardAvoidingView>
-      <SafeAreaView className="bg-primary-100">
         <ScrollView>
-          <View className="w-full flex justify-center h-screen-safe px-4 my-6">
+          <View className="w-full flex items-center justify-center h-screen-safe px-4 my-6">
             <Image
               source={images.logo}
               resizeMode="contain"
@@ -72,7 +78,7 @@ const register = () => {
             <CustomButton
               title="Sign Up"
               handlePress={submit}
-              containerStyles="mt-7"
+              containerStyles="w-full mt-7"
               isLoading={isSubmitting}
               textStyles={undefined}
             />
@@ -90,8 +96,8 @@ const register = () => {
             </View>
           </View>
         </ScrollView>
-      </SafeAreaView>
     </KeyboardAvoidingView>
+    </LinearGradient>
   );
 };
 

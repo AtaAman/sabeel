@@ -10,7 +10,6 @@ import { SurahProvider } from "@/store/useSurahContext";
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
-  
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
     "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
@@ -40,21 +39,51 @@ const RootLayout = () => {
   }
 
   return (
-    <QuranProvider >
+    <QuranProvider>
       <SurahProvider>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="QuranSettings/index" options={{ 
-          headerTitle: "Settings",
-          headerStyle: { backgroundColor: "#1e88e5" },
-          headerTintColor: "#ffffff",
-          headerBackTitle: "back",
-          }} />
-      </Stack>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="Quran/quranSettings"
+            options={{
+              headerTitle: "Settings",
+              headerStyle: { backgroundColor: "#1e88e5" },
+              headerTintColor: "#ffffff",
+              headerBackTitle: "back",
+            }}
+          />
+          <Stack.Screen
+            name="Quran/surahSettings"
+            options={{
+              headerTitle: "Settings",
+              headerStyle: { backgroundColor: "#1e88e5" },
+              headerTintColor: "#ffffff",
+              headerBackTitle: "back",
+            }}
+          />
+          <Stack.Screen
+            name="Quran/surah"
+            options={{
+              headerTitle: "Surah",
+              headerStyle: { backgroundColor: "#1e88e5" },
+              headerTintColor: "#ffffff",
+              headerBackTitle: "back",
+            }}
+          />
+          <Stack.Screen
+            name="Quran/quran"
+            options={{
+              headerTitle: "Quran",
+              headerStyle: { backgroundColor: "#1e88e5" },
+              headerTintColor: "#ffffff",
+              headerBackTitle: "back",
+            }}
+          />
+        </Stack>
       </SurahProvider>
-    </QuranProvider>  
+    </QuranProvider>
   );
 };
 

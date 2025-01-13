@@ -5,10 +5,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "../constants";
 import { CustomButton, Loader } from "../components";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Welcome = () => {
   return (
-    <SafeAreaView className="bg-primary-100">
+    <LinearGradient
+          colors={["#000814", "#0077b6"]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{ flex: 1 }}
+        >
+    <SafeAreaView>
       <ScrollView
         contentContainerStyle={{
           height: "100%",
@@ -17,7 +24,7 @@ const Welcome = () => {
         <View className="w-full flex justify-center items-center h-full px-4">
           <Image
             source={images.logo}
-            className="h-[100px] w-[150px]"
+            className="h-[80px] w-[120px]"
             resizeMode="contain"
           />
 
@@ -26,11 +33,11 @@ const Welcome = () => {
               padding: 20,
               shadowColor: "020202",
               shadowOffset: { width: 2, height: 8 },
-              shadowOpacity: 0.4,
-              shadowRadius: 6,
+              shadowOpacity: 0.2,
+              shadowRadius: 12,
               elevation: 2,
             }}
-            className="my-5 relative shadow-lg shadow-black-100 rounded-2xl bg-secondary"
+            className="my-5 relative shadow-lg shadow-black-100 rounded-2xl bg-[#fff]/60 backdrop-blur-lg"
           >
             <Text className="text-3xl rounded-2xl  text-secondary-200 font-bold text-justify px-4">
               Every Task, a Step Closer to Your Purpose.
@@ -57,6 +64,7 @@ const Welcome = () => {
 
       <StatusBar backgroundColor="#161622" style="light" />
     </SafeAreaView>
+    </LinearGradient>
   );
 };
 
