@@ -8,6 +8,9 @@ import { CustomButton, Loader } from "../components";
 import { LinearGradient } from "expo-linear-gradient";
 
 const Welcome = () => {
+    const loggin = true;
+  
+    if (loggin) return <Redirect href="/home" />;
   return (
     <LinearGradient
           colors={["#000814", "#0077b6"]}
