@@ -48,7 +48,6 @@ const HomePage = () => {
   const scheduleNotification = async () => {
     const currentHour = new Date().getHours();
 
-    // Send notification at 8 PM
     if (currentHour === 20) {
       await Notifications.scheduleNotificationAsync({
         content: {
@@ -58,7 +57,7 @@ const HomePage = () => {
         trigger: {
           hour: 20,
           minute: 0,
-          repeats: true, // Ensures the notification is sent every day at 8 PM
+          repeats: true,
         },
       });
     }
@@ -101,7 +100,7 @@ const HomePage = () => {
 
   const renderSurahCard = ({ item }: any) => (
     <TouchableOpacity
-      className="bg-[#fff]/10 flex border border-primary  justify-center backdrop-blur-lg rounded-2xl mr-6 w-[250px] items-center"
+      className="bg-[#fff]/10 flex border border-secondary/20  justify-center backdrop-blur-lg rounded-2xl mr-6 w-[240px] items-center"
       onPress={() => {
         setSelectedSurah(item);
         setSelectedAyat(1);
@@ -111,23 +110,22 @@ const HomePage = () => {
         });
       }}
     >
-      <View className="flex flex-row justify-between w-full px-4">
+      <Image
+        source={images.surah}
+        className="h-full w-full rounded-2xl"
+        resizeMode="contain"
+      />
+      <View className="flex absolute justify-center h-full items-center w-full px-4">
         <Text
           style={[{ fontFamily: fonts[arabicFont] }]}
-          className="text-2xl text-secondary font-extrabold"
+          className="text-3xl pt-4 text-secondary font-extrabold"
         >
           {item.name}
         </Text>
-        <Text className="text-lg text-secondary">{item.englishName}</Text>
+        <Text className="text-md text-secondary/80">{item.englishName}</Text>
+        
       </View>
-      <Image
-        source={images.surah}
-        className="h-[90px] w-[90px]"
-        resizeMode="contain"
-      />
-      <Text className="text-sm text-orange-100 mb-1">
-        {item.englishNameTranslation}
-      </Text>
+      
     </TouchableOpacity>
   );
 
@@ -138,7 +136,7 @@ const HomePage = () => {
       end={{ x: 1, y: 1 }}
       style={{ flex: 1 }}
     >
-      <SafeAreaView className="flex h-full items-center justify-start">
+      <SafeAreaView className="flex h-screen-safe-offset-10 items-center justify-start">
         <View className=" w-full flex flex-row items-center justify-between pb-2 px-4">
           <Image
             source={images.logo}
@@ -178,8 +176,39 @@ const HomePage = () => {
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
         >
-          <Text className="text-xl w-full my-2 text-secondary px-5">
-            Chapter
+          <View className="flex items-center justify-center">
+            {new Date().getHours() >= 20 && new Date().getHours() < 24 ? (
+              <>
+                <Text className="text-lg w-full mt-4 mb-2 text-secondary px-5">
+                  Surah of the night
+                </Text>
+                <TouchableOpacity
+                  className="bg-[#fff]/10 border border-secondary/20 flex justify-center backdrop-blur-lg rounded-2xl h-[200px] w-[95%] items-center"
+                  onPress={() => handleSurahPress(surahOfTheNights)}
+                >
+                  <Image
+                source={images.surah2}
+                className="w-full h-full"
+                resizeMode="cover"
+              />
+                  <View className="absolute">
+                  <Text
+                    style={[{ fontFamily: fonts[arabicFont] }]}
+                    className="text-5xl pt-5 text-secondary font-extrabold"
+                  >
+                    {surahOfTheNights.name}
+                  </Text>
+                  <Text className="text-xl text-center text-secondary/90">
+                    {surahOfTheNights.englishName}
+                  </Text>
+                </View>
+                </TouchableOpacity>
+              </>
+            ) : null}
+          </View>
+
+          <Text className="text-lg w-full my-2 text-secondary px-5">
+            Chapters
           </Text>
 
           {/* FlatList with natural height */}
@@ -198,11 +227,11 @@ const HomePage = () => {
           />
 
           <View className="w-full flex items-center">
-            <Text className="text-xl w-full mt-4 mb-2 text-secondary px-5">
+            <Text className="text-lg w-full mt-4 mb-2 text-secondary px-5">
               Quran Reading
             </Text>
             <TouchableOpacity
-              className="bg-[#fff]/10 flex justify-center backdrop-blur-lg rounded-2xl h-[200px] w-[95%] items-center"
+              className="bg-[#fff]/10 flex border border-secondary/20 justify-center backdrop-blur-lg rounded-2xl h-[200px] w-[95%] items-center"
               onPress={() => {
                 router.push({
                   pathname: "/Quran/quran",
@@ -215,65 +244,44 @@ const HomePage = () => {
                 resizeMode="contain"
               />
               <View className="absolute flex flex-row items-center right-6 bottom-5">
-                <Text className="text-orange-100 text-lg">
+                <Text className="text-secondary text-lg">
                   Continue Reading{" "}
                 </Text>
-                <Icon name="arrow-right" size={12} color="#ffede5" />
+                <Icon name="arrow-right" size={12} color="#dad7cd" />
               </View>
             </TouchableOpacity>
           </View>
           <View className="w-full flex items-center mt-4">
-            <Text className="text-xl w-full mt-4 mb-2 text-secondary px-5">
+            <Text className="text-lg w-full mb-2 text-secondary px-5">
               Surah of the Day
             </Text>
             {surahOfTheDay ? (
               <TouchableOpacity
-                className="bg-[#fff]/10 flex justify-center backdrop-blur-lg rounded-2xl h-[200px] w-[95%] items-center"
+                className="bg-[#fff]/10 flex border border-secondary/20 justify-center backdrop-blur-lg rounded-2xl h-[200px] w-[95%] items-center"
                 onPress={() => handleSurahPress(surahOfTheDay)}
               >
-                <Text
-                  style={[{ fontFamily: fonts[arabicFont] }]}
-                  className="text-2xl text-secondary font-extrabold"
-                >
-                  {surahOfTheDay.name}
-                </Text>
-                <Text className="text-lg text-secondary">
-                  {surahOfTheDay.englishName}
-                </Text>
-                <Text className="text-sm text-orange-100 mb-1">
-                  {surahOfTheDay.englishNameTranslation}
-                </Text>
-                <Text className="text-xs text-secondary">
-                  Total Ayat: {surahOfTheDay.numberOfAyahs}
-                </Text>
+                <Image
+                  source={images.surah2}
+                  className="w-full h-full"
+                  resizeMode="cover"
+                />
+                <View className="absolute">
+                  <Text
+                    style={[{ fontFamily: fonts[arabicFont] }]}
+                    className="text-5xl pt-5 text-secondary font-extrabold"
+                  >
+                    {surahOfTheDay.name}
+                  </Text>
+                  <Text className="text-xl text-center text-secondary/90">
+                    {surahOfTheDay.englishName}
+                  </Text>
+                </View>
               </TouchableOpacity>
             ) : (
               <Text className="text-secondary">
                 No Surah Selected for Today
               </Text>
             )}
-
-            <Text className="text-xl w-full mt-4 mb-2 text-secondary px-5">
-              Surah of the night
-            </Text>
-            {new Date().getHours() >= 20 && new Date().getHours() < 24 ? (
-              <TouchableOpacity
-                className="bg-[#fff]/10 flex justify-center backdrop-blur-lg rounded-2xl h-[200px] w-[95%] items-center"
-                onPress={() => handleSurahPress(surahOfTheNights)}
-              >
-                <Text
-                  style={[{ fontFamily: fonts[arabicFont] }]}
-                  className="text-2xl text-secondary font-extrabold"
-                >
-                  Al-Mulk
-                </Text>
-                <Text className="text-lg text-secondary">The Sovereignty</Text>
-                <Text className="text-sm text-orange-100 mb-1">
-                  The Surah of Protection Before Bed
-                </Text>
-                <Text className="text-xs text-secondary">Total Ayat: 30</Text>
-              </TouchableOpacity>
-            ) : null}
           </View>
         </ScrollView>
       </SafeAreaView>
